@@ -10,6 +10,11 @@ Router.map ->
     data: -> Posts.findOne(@params._id)
   )
   @route('posts_create', path: '/posts_create')
+  @route('posts_edit',
+    path: '/posts/:_id/edit',
+    data: -> Posts.findOne(this.params._id)
+  )
+
 
 requireLogin = (pause) ->
   unless Meteor.user()

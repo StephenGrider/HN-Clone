@@ -1,5 +1,14 @@
 @Posts = new Meteor.Collection('posts')
 
+Posts.allow
+  update: ownsDocument,
+  remove: ownsDocument
+
+Posts.deny
+  update: (userId, post, fieldNames) ->
+    _.without(fieldNames, 'url', 'title').length > 0
+
+
 Meteor.methods
   post_create: (postAttrs) ->
     user = Meteor.user()
@@ -24,11 +33,3 @@ Meteor.methods
     )
 
     Posts.insert(post)
-
-  post_delete: (postAttrs) ->
-    user = Meteor.user()
-
-    unless user
-      throw new Meteor.Error(401, 'You need to login to post')
-
-    Posts.remove(_id: postAttrs._id)

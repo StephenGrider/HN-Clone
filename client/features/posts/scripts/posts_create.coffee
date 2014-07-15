@@ -9,10 +9,5 @@ Template.posts_create.events
     Meteor.call('post_create', post, (err, id) ->
       alert(err.reason) if err
 
-      Router.go('posts_index')
+      Router.go('posts_index', {_id: currentPostId})
     )
-
-Template.posts_index.events
-  'click .delete': (e) ->
-
-    Meteor.call('post_delete', _id: 'PtmYYjoRzLTxEfXtA', -> )

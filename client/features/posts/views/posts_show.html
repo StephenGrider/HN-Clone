@@ -1,3 +1,13 @@
 <template name="posts_show">
   {{> post}}
+  <ul class="comments">
+    {{#each comments}}
+      {{> comment}}
+    {{/each}}
+  </ul>
+  {{#if currentUser}}
+    {{> comments_create}}
+  {{else}}
+    Please log in to leave a comment.
+  {{/if}}
 </template>

@@ -7,7 +7,8 @@ Template.posts_create.events
       message: $(e.target).find('[name=message]').val()
 
     Meteor.call('post_create', post, (err, id) ->
-      alert(err.reason) if err
-
-      Router.go('posts_index', {_id: currentPostId})
+      if err
+        addError(err.reason)
+      else
+        Router.go('posts_index', {_id: currentPostId})
     )

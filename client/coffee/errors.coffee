@@ -1,5 +1,3 @@
-@Errors = new Meteor.Collection(null)
-
-
-addError = (message) ->
-  Errors.insert(message: message)
+Template.errors.helpers
+  errors: ->
+    Errors.find()

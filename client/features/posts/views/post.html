@@ -3,10 +3,11 @@
     <div class="post-content">
       <h3><a href="{{url}}">{{title}}</a><span>{{domain}}</span></h3>
       <p>
-        submitted by {{author}}
+        submitted by {{author}},
+        <a href="{{pathFor 'posts_show'}}">{{commentsCount}} comments</a>
         {{#if ownPost}}<a href="{{pathFor 'posts_edit'}}">Edit</a>{{/if}}
       </p>
     </div>
-    <a href="{{pathFor 'post'}}" class="discuss btn">Discuss</a>
+    <a href="{{pathFor 'posts_show'}}" class="discuss btn">Discuss</a>
   </div>
 </template>

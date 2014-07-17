@@ -15,6 +15,3 @@ Template.post.helpers
 
   ownPost: ->
     @userId == Meteor.userId()
-
-  commentsCount: ->
-    Comments.find(postId: @_id).count()

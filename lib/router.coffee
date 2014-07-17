@@ -2,12 +2,14 @@ Router.configure
   layoutTemplate: 'layout'
   loadingTemplate: 'loading'
   waitOn: ->
-    [ Meteor.subscribe('posts'), Meteor.subscribe('comments') ]
+    [ Meteor.subscribe('posts') ]
 
 Router.map ->
   @route('posts_index', path: '/')
   @route('posts_show',
-    path: '/posts/:_id'
+    path: '/posts/:_id',
+    waitOn: ->
+      Meteor.subscribe('comments', @params._id)
     data: -> Posts.findOne(@params._id)
   )
   @route('posts_create', path: '/posts_create')

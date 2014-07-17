@@ -10,5 +10,5 @@ Template.posts_create.events
       if err
         addError(err.reason)
       else
-        Router.go('posts_index', {_id: currentPostId})
+        Router.go('posts_index', {_id: id})
     )
